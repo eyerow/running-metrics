@@ -1,9 +1,20 @@
-import { format } from 'https://deno.land/std@0.219.0/datetime/format.ts';
 import { Activity } from "./types/activity.ts";
 import activitiesJson from './docs/output/activities.json' with { type: 'json' };
 
 const activities: Activity[] = activitiesJson as Activity[];
-
+const runningActivitiesToExtract: (keyof Activity)[] = [
+  "activityId",
+  "activityName",
+  "duration",
+  "distance",
+  "averageHR",
+  "averageSpeed",
+  "averageRunningCadenceInStepsPerMinute",
+  "avgVerticalOscillation",
+  "avgStrideLength",
+  "avgGroundContactBalance",
+  "startTimeGMT",
+];
 
 function writeJson(path: string, data: object): string {
   try {
@@ -15,7 +26,7 @@ function writeJson(path: string, data: object): string {
   }
 }
 
-async function markdownTesting(data:any[]){
+async function generateWeeklyReport(data:any[]){
   const markDowndata = await Deno.readFileSync(`./docs/templates/weekly.md`);
   const decoder = new TextDecoder("utf-8");
   const encoder = new TextEncoder()
@@ -50,7 +61,7 @@ function filterActivitiesFromLastWeek(activities: any[]){
     return filteredItems;
 }
 
-function customPickBy<T extends object>(
+function filterActivityProperties<T extends object>(
   array: T[],
   keysToPick: (keyof T)[]
 ): Partial<T>[] {
@@ -66,26 +77,14 @@ function customPickBy<T extends object>(
 }
 
 
-const runningActivityToExtract: (keyof Activity)[] = [
-  "activityId",
-  "activityName",
-  "startTimeGMT",
-  "duration",
-  "averageHR",
-  "maxHR",
-  "distance",
-  "averageRunningCadenceInStepsPerMinute",
-  "avgVerticalRatio",
-  "avgGroundContactBalance"
-];
-const filtered=customPickBy(activities, runningActivityToExtract)
 
-const lastWeeksActivities = await filterActivitiesFromLastWeek(filtered)
+
+const filteredActivities=filterActivityProperties(activities, runningActivitiesToExtract)
+const lastWeeksActivities = await filterActivitiesFromLastWeek(filteredActivities)
 const forMarkdown = lastWeeksActivities.map(({ startTimeGMT, distance }) => ({
     startTimeGMT,
     distance: parseFloat((distance / 1000).toFixed(2))
 }))
 
-
-writeJson('filtered-maybe',lastWeeksActivities);
-await markdownTesting(forMarkdown)
+writeJson('weekly-report',lastWeeksActivities);
+await generateWeeklyReport(forMarkdown)
