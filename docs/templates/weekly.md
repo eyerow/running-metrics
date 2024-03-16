@@ -1,41 +1,19 @@
 # Weekly Activity Report
 
-| Week     | Monday      | Tuesday      | Wednesday      | Thursday      | Friday      | Saturday      | Sunday      | Weekly Total      |
-| -------- | ----------- | ------------ | -------------- | ------------- | ----------- | ------------- | ----------- | ----------------- |
-| W-{Week} | {Monday}km | {Tuesday}km | {Wednesday}km | {Thursday}km | {Friday}km | {Saturday}km | {Sunday}km | {WeeklyTotal}km |
+| Week | Monday     | Tuesday     | Wednesday     | Thursday     | Friday     | Saturday     | Sunday     | Weekly Total    |
+| ---- | ---------- | ----------- | ------------- | ------------ | ---------- | ------------ | ---------- | --------------- |
+|      | {Monday}km | {Tuesday}km | {Wednesday}km | {Thursday}km | {Friday}km | {Saturday}km | {Sunday}km | {WeeklyTotal}km |
 
+## Runs
 
-## Runs 
-| Name     | Duration (min) | HR   | Pace (min/km) | Cadence (steps/min) | Vertical Oscillation | Stride Length (m) | Ground Contact Time (ms) |
-|-------------------|----------------|------|---------------|---------------------|----------------------|-------------------|-------------------------|
-| {activityName}    | {duration} | {averageHR}  | {averageSpeed} mph | {averageRunningCadenceInStepsPerMinute}| {avgVerticalOscillation}  | {avgStrideLength} | {avgGroundContactTime}|
-
-
-## Strength Training
-| Workout Name | Exercise    | Sets | Reps per Set | Weight (kg) / Body Weight | Rest (s) |
-| ------------ | ----------- | ---- | ------------ | ------------------------- | -------- |
-| Upper Body   | Bench Press | 4    | 8            | 70                        | 90       |
-|              | Pull-ups    | 4    | 10           | Body Weight               | 90       |
-|              |             |      |              |                           |          |
-| Lower Body   | Squats      | 3    | 10           | 50                        | 60       |
-|              | Deadlifts   | 3    | 6            | 80                        | 120      |
-
-## Activities
-
-{activityId}
-{activityName}
-{startTimeGMT}
-{duration}
-{averageHR}
-{averageRunningCadenceInStepsPerMinute}
-{avgVerticalRatio}
-{avgGroundContactBalance}
-{averageHR} 
-{averageSpeed} 
-{avgGroundContactTime} 
-{avgStrideLength}
-{avgVerticalOscillation}
-{distance}
+| Name | Duration (min) | HR | Pace (min/km) | Cadence (steps/min) | Vertical Oscillation | Stride Length (m) | Ground Contact Time (ms) |
+| ---- | -------------- | -- | ------------- | ------------------- | -------------------- | ----------------- | ------------------------ |
+{activityTable}
 
 ---
 
+## Strength Training
+
+| Workout Name | Exercise | Sets | Reps per Set | Weight (kg) / Body Weight |
+| ------------ | -------- | ---- | ------------ | ------------------------- |
+{exerciseTable}

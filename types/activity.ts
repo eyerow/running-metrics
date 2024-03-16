@@ -96,7 +96,7 @@ export interface Activity {
   maxElevation: number;
   avgDoubleCadence: null;
   maxDoubleCadence: number;
-  summarizedExerciseSets: null;
+  summarizedExerciseSets: ExerciseSetLite[];
   maxDepth: null;
   avgDepth: null;
   surfaceInterval: null;
@@ -252,4 +252,28 @@ export interface SummarizedDiveInfo {
   waterDensity: null;
   summarizedDiveGases: any[];
   totalSurfaceTime: null;
+}
+
+export interface ActivityLite {
+  activityId: number;
+  activityName: string;
+  averageHR: number;
+  averageRunningCadenceInStepsPerMinute: number;
+  averageSpeed: number;
+  avgGroundContactBalance: number | null;
+  avgStrideLength: number;
+  avgVerticalOscillation: number | null;
+  distance: number;
+  duration: number;
+  startTimeGMT: string;
+  summarizedExerciseSets: ExerciseSetLite[];
+}
+
+export interface ExerciseSetLite {
+  category: string;
+  subCategory: string;
+  reps: number;
+  volume: number;
+  duration: number;
+  sets: number;
 }
